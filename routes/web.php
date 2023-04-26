@@ -27,6 +27,11 @@ Route::get('signout', [CustomAuthController::class, 'signOut'])->name('signout')
 
 //Admin Area
 Route::get ('admin/manage-users',       [AdminController::class, 'manageUsers'])->name("admin.manageUsers");
+Route::get ('admin/manage-users/create',[AdminController::class, 'createUser'])->name("admin.manageUsers.create");
+Route::get ('admin/manage-users/view/{user}', [AdminController::class, 'viewUser'])->name("admin.manageUsers.view");
+Route::get ('admin/manage-users/edit/{user}', [AdminController::class, 'editUser'])->name("admin.manageUsers.edit");
+Route::get ('admin/manage-users/remove/{user}', [AdminController::class, 'removeUser'])->name("admin.manageUsers.remove");
+
 
 //User Area
 Route::get ("user/validate-invitations", [UserController::class, 'validateInvitations'])->name("user.validateInvitations");

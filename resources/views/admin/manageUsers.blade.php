@@ -2,6 +2,9 @@
 
 @section('content')
 
+<a class="btn btn-primary" href="{{ route("admin.manageUsers.create") }}">(+) Add and Edit New Empty User</a>
+<br><br>
+
 <table class="table table-striped">
     <thead>
         <tr>
@@ -24,7 +27,12 @@
                 <td>{{ $user->updated_at }}</td>
                 <td>
                     <div class="btn-group flex-wrap" role="group" aria-label="Basic example">
-                        <button type="button" class="btn btn-primary">Open</button>
+
+                        <a class="btn btn-primary"
+                           href="{{ route("admin.manageUsers.view", ["user" => $user->id]) }}"
+                        >
+                            Open
+                        </a>
 
                         <div class="btn-group" role="group"> <!-- Action -->
                             <button id="btnGroupDrop{{ $user->id }}" type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -37,8 +45,17 @@
                             </div>
                         </div>
 
-                        <button type="button" class="btn btn-warning">Edit</button>
-                        <button type="button" class="btn btn-danger">Remove</button>
+                        <a class="btn btn-warning"
+                           href="{{ route("admin.manageUsers.edit", ["user" => $user->id]) }}"
+                        >
+                            Edit
+                        </a>
+
+                        <a class="btn btn-danger"
+                           href="{{ route("admin.manageUsers.remove", ["user" => $user->id]) }}"
+                        >
+                            Remove
+                        </a>
                     </div>
                 </td>
 
