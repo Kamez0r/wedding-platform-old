@@ -1,6 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CustomAuthController;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +16,19 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
+//Auth System
+Route::get ('dashboard',    [CustomAuthController::class, 'dashboard']);
+Route::get ('login',        [CustomAuthController::class, 'index'])->name('login');
+Route::post('custom-login', [CustomAuthController::class, 'customLogin'])->name('login.custom');
+Route::get ('registration', [CustomAuthController::class, 'registration'])->name('register-user');
+Route::post('custom-registration',[CustomAuthController::class, 'customRegistration'])->name('register.custom');
+Route::get('signout', [CustomAuthController::class, 'signOut'])->name('signout');
+
+//Admin Area
+Route::get ('admin/manage-users',       [AdminController::class, 'manageUsers'])->name("admin.manageUsers");
+
+//User Area
+Route::get ("user/validate-invitations", [UserController::class, 'validateInvitations'])->name("user.validateInvitations");
+
+
